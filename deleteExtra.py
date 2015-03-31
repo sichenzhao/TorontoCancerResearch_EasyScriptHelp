@@ -15,6 +15,7 @@ strLst = ["chromosome_start",
 		  "donor_age_at_enrollment"
 		  ]
 
+# indexes of matching strings
 def strToInt (strLst, firstLine):
 	tmpIndex = 1
 	indexList = []
@@ -24,6 +25,7 @@ def strToInt (strLst, firstLine):
 		tmpIndex = tmpIndex + 1
 	return indexList		  
 
+# based on useful indexes, reduce file based on columns
 def reduceFiles (inputFile, outputFile, keepIndexes):
 	for line in inputFile:
 		colList = [x for x in line.split('\t')]
@@ -38,6 +40,7 @@ def reduceFiles (inputFile, outputFile, keepIndexes):
 		outputFile.write( '\t'.join(newList) )
 		outputFile.write("\n")
 
+# add new element for ssm dictionary
 def specialAppend (dictMute, criticalStr, id):
 	if criticalStr in dictMute:
 		if id in dictMute[criticalStr]:
@@ -47,6 +50,7 @@ def specialAppend (dictMute, criticalStr, id):
 	else:
 		dictMute[criticalStr] = [id]
 
+# group ssm file by mutation into dictionary
 def groupSsm (reducedSsmFile, lines=-1):
 	dictMute = dict()
 	for line in reducedSsmFile:
@@ -56,6 +60,41 @@ def groupSsm (reducedSsmFile, lines=-1):
 		if lines == 0:
 			break
 	return dictMute
+
+# group clinic file by id into dictionary
+def dictCli (reducedCliFile, lines=-1):
+	dictId = dict()
+	for line in reducedCliFile:
+		colList = [x for x in line.split('\t')]
+		dictId[colList[0]] = colList[1:]
+		lines = lines - 1
+		if lines == 0:
+			break
+		return dictId
+
+# create info dictionary at the first time dealing with clinic file
+def createDict
+
+# update totalInfo by combine with singleInfo
+def updateInfo (totalInfo, singleInfo):
+	if totalInfo == :
+		totatlInfo = singleInfo
+	else:
+		totalInfo[3] = singleInfo[3] 
+		singleInfo[4] 
+
+# given cliDictionary and a idLst, should return list of combined info
+def searchCli (cliDict, idLst):
+	combinedInfo = list()
+	for id in idLst:
+		if id in cliDict:
+			idLst.remove(id)
+			if len(cliDict[id]) == 5:
+				combinedInfo.append(cliDict[id].append(1))
+			else:
+				lst = cliDict[id]
+				lst[-1] = lst[-1]+1
+				combinedInfo.append(cliDict[id])
 
 keepIndexes = []
 inputFile = open('clinical.tsv', 'r')
