@@ -2,5 +2,5 @@
 Easy python script help manipulate tsv data
 
 RUN "sqlite3 < user.sql"
-then RUN "python new_summary.py"
-then do sqlite3 export the "tmp.db" to csv file
+Then RUN "python new_summary.py"
+Then do sqlite3 export the "tmp.db" to csv file
