@@ -15,6 +15,12 @@ strLst = ["chromosome_start",
 		  "donor_age_at_enrollment"
 		  ]
 
+keyOfSSM = ["chromosome_start",
+		  "chromosome_end",
+		  "chromosome_strand",
+		  "chromosome",
+		  ]
+
 # indexes of matching strings
 def strToInt (strLst, firstLine):
 	tmpIndex = 1
@@ -72,16 +78,13 @@ def dictCli (reducedCliFile, lines=-1):
 			break
 		return dictId
 
-# create info dictionary at the first time dealing with clinic file
-def createDict
-
 # update totalInfo by combine with singleInfo
 def updateInfo (totalInfo, singleInfo):
-	if totalInfo == :
-		totatlInfo = singleInfo
+	if totalInfo == list():
+		totalInfo = 
 	else:
 		totalInfo[3] = singleInfo[3] 
-		singleInfo[4] 
+		singleInfo[4] 90-
 
 # given cliDictionary and a idLst, should return list of combined info
 def searchCli (cliDict, idLst):
